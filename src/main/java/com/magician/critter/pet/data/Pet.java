@@ -39,14 +39,7 @@ public class Pet {
     @JoinColumn(name="owner_id")
     private Customer owner;
 
-    @ManyToMany(
-        cascade={CascadeType.PERSIST, CascadeType.MERGE}
-    )
-    @JoinTable(
-        name = "pet_schedule",
-        joinColumns = { @JoinColumn(name = "pet_id")},
-        inverseJoinColumns = { @JoinColumn(name = "schedule_id")}
-    )
+    @ManyToMany(mappedBy = "pets")
     private List<Schedule> schedules = new ArrayList<>();
   
 }

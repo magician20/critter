@@ -6,16 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.magician.critter.pet.data.Pet;
 import com.magician.critter.user.data.entity.Employee;
@@ -40,10 +31,28 @@ public class Schedule {
     // @Column(nullable = false)
     private Long id;
 
-    @ManyToMany(mappedBy = "schedules", targetEntity = Employee.class)
+    @ManyToMany
+    (
+        cascade={CascadeType.PERSIST, CascadeType.MERGE}
+        //,fetch = FetchType.LAZY //defult
+    )
+    @JoinTable(
+        name = "schedule_employee",
+        joinColumns = { @JoinColumn(name = "schedule_id")},
+        inverseJoinColumns = { @JoinColumn(name = "employee_id")}
+    )
     private List<Employee> employees = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "schedules", targetEntity = Pet.class)
+    @ManyToMany
+    (
+        cascade={CascadeType.PERSIST, CascadeType.MERGE}
+       // ,fetch = FetchType.LAZY //defult
+    )
+    @JoinTable(
+        name = "schedule_pet",
+        joinColumns = { @JoinColumn(name = "schedule_id")},
+        inverseJoinColumns = { @JoinColumn(name = "pet_id")}
+    )
     private List<Pet> pets = new ArrayList<>();;
 
     // define date of work with specific pet

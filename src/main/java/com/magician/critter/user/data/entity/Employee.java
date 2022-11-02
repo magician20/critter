@@ -47,14 +47,8 @@ public class Employee extends User {
     @Enumerated(EnumType.STRING)
     private Set<EmployeeSkill> skills = new HashSet<>();
 
-    @ManyToMany(
-        cascade={CascadeType.PERSIST, CascadeType.MERGE}
-    )
-    @JoinTable(
-        name = "employee_schedule",
-        joinColumns = { @JoinColumn(name = "employee_id")},
-        inverseJoinColumns = { @JoinColumn(name = "schedule_id")}
-    )
+
+    @ManyToMany(mappedBy = "employees")
     private List<Schedule> schedules;
 
 }
