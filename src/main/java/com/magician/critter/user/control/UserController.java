@@ -28,14 +28,16 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    @Autowired
+
     private CustomerService customerService;
-
-    @Autowired
     private EmployeeService employeeService;
-
-    @Autowired
     private PetService petService;
+
+    public UserController(CustomerService customerService, EmployeeService employeeService, PetService petService) {
+        this.customerService = customerService;
+        this.employeeService = employeeService;
+        this.petService = petService;
+    }
 
     // Customer Methods
     @PostMapping("/customer")

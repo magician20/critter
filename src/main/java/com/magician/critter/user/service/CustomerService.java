@@ -13,8 +13,11 @@ import com.magician.critter.user.data.repository.CustomerRepository;
 @Service
 public class CustomerService {
 
-    @Autowired
     private CustomerRepository customerRepository;
+
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     // Customer methods
     @Transactional

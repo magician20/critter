@@ -23,13 +23,16 @@ import java.util.stream.Collectors;
 @RequestMapping("/schedule")
 public class ScheduleController {
 
-    @Autowired
     private ScheduleService scheduleService;
-
-    @Autowired
     private PetService petService;
-    @Autowired
     private EmployeeService employeeService;
+    
+
+    public ScheduleController(ScheduleService scheduleService, PetService petService, EmployeeService employeeService) {
+        this.scheduleService = scheduleService;
+        this.petService = petService;
+        this.employeeService = employeeService;
+    }
 
     @PostMapping
     public ScheduleDTO createSchedule(@RequestBody ScheduleDTO scheduleDTO) {

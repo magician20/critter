@@ -17,8 +17,11 @@ import com.magician.critter.user.data.repository.EmployeeRepository;
 @Service
 public class EmployeeService{
 
-    @Autowired
     private EmployeeRepository employeeRepository;
+
+    public EmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
 
     // Employee Methods
     @Transactional

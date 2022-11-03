@@ -17,11 +17,14 @@ import javax.transaction.Transactional;
 @Service
 @Transactional
 public class PetService {
-    @Autowired
-    private PetRepository petRepository;
 
-    @Autowired
+    private PetRepository petRepository;
     private CustomerRepository customerRepository;
+
+    public PetService(PetRepository petRepository, CustomerRepository customerRepository) {
+        this.petRepository = petRepository;
+        this.customerRepository = customerRepository;
+    }
 
     public Pet savePet(Pet pet) {
         pet = petRepository.save(pet);

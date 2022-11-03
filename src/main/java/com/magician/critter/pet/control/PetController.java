@@ -19,11 +19,13 @@ import java.util.stream.Collectors;
 @RequestMapping("/pet")
 public class PetController {
 
-    @Autowired
     private PetService petService;
-
-    @Autowired
     private CustomerService customerService;
+
+    public PetController(PetService petService, CustomerService customerService) {
+        this.petService = petService;
+        this.customerService = customerService;
+    }
 
     @PostMapping
     public PetDTO savePet(@RequestBody PetDTO petDTO) {

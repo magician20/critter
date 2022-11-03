@@ -21,17 +21,20 @@ import javax.transaction.Transactional;
 @Service
 @Transactional
 public class ScheduleService {
-    @Autowired
+
     ScheduleRepository scheduleRepository;
-
-    @Autowired
     PetRepository petRepository;
-
-    @Autowired
     EmployeeRepository employeeRepository;
-
-    @Autowired
     CustomerRepository customerRepository;
+    
+
+    public ScheduleService(ScheduleRepository scheduleRepository, PetRepository petRepository,
+            EmployeeRepository employeeRepository, CustomerRepository customerRepository) {
+        this.scheduleRepository = scheduleRepository;
+        this.petRepository = petRepository;
+        this.employeeRepository = employeeRepository;
+        this.customerRepository = customerRepository;
+    }
 
     public Schedule createSchedule(Schedule schedule) {
         return scheduleRepository.save(schedule);
