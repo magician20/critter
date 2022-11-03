@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import javax.transaction.Transactional;
 
 /**
  * This is a set of functional tests to validate the basic capabilities desired for this application.
@@ -36,6 +38,7 @@ import java.util.stream.IntStream;
  * These tests should all pass once the project is complete.
  */
 @SpringBootTest(classes = CritterApplication.class)
+@ActiveProfiles("test")
 @Transactional
 public class CritterFunctionalTest {
 

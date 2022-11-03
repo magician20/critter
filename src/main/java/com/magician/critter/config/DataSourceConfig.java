@@ -9,6 +9,7 @@
 
 // //Return a dedicated implementation rather than DataSource
 
+//@Configuration
 // public class DataSourceConfig {
 
 //     @Bean
