@@ -17,8 +17,10 @@ import com.magician.critter.user.data.entity.EmployeeSkill;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -39,7 +41,6 @@ import javax.transaction.Transactional;
  */
 @SpringBootTest(classes = CritterApplication.class)
 @ActiveProfiles("test")
-@Transactional
 public class CritterFunctionalTest {
 
     @Autowired
